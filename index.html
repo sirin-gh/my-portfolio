@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Interactive gothic game developer portfolio."
+  >
+
+  <title>Gothic Portfolio</title>
+
+  <!-- Fonts -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
+</head>
+
+
+<body>
+
+  <!-- =========================================================
+       3D CANVAS
+       ========================================================= -->
+
+  <canvas id="canvas"></canvas>
+
+
+  <!-- =========================================================
+       LOADING SCREEN
+       ========================================================= -->
+
+  <div id="loading">
+
+    <div class="loading-inner">
+
+      <div class="loading-rune">
+        ✦
+      </div>
+
+      <div id="loading-text">
+        Loading scene...
+      </div>
+
+      <div id="loading-bar">
+
+        <div id="loading-fill"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       TOP BAR
+       ========================================================= -->
+
+  <div id="topbar">
+
+    <div class="topbar-left">
+
+      <div class="brand-title">
+        ✦ SIRINE'S PORTFOLIO
+      </div>
+
+
+      <div
+        id="section-nav"
+        class="section-nav"
+      >
+
+        <!-- ABOUT ME -->
+
+        <button
+          type="button"
+          class="section-pill is-active"
+          data-target="About Me"
+        >
+
+          <span class="section-num">
+            01
+          </span>
+
+          <span class="section-label">
+            ABOUT ME
+          </span>
+
+        </button>
+
+
+        <!-- TECHNICAL SKILLS -->
+
+        <button
+          type="button"
+          class="section-pill"
+          data-target="Technical Skills"
+        >
+
+          <span class="section-num">
+            02
+          </span>
+
+          <span class="section-label">
+            TECHNICAL SKILLS
+          </span>
+
+        </button>
+
+
+        <!-- PROJECTS -->
+
+        <button
+          type="button"
+          class="section-pill"
+          data-target="Featured Projects"
+         
+        >
+
+          <span class="section-num">
+            03
+          </span>
+
+          <span class="section-label">
+            PROJECTS
+          </span>
+
+        </button>
+
+
+        <!-- CONTACT -->
+
+        <button
+          type="button"
+          class="section-pill"
+          data-target="Get In Touch"
+        >
+
+          <span class="section-num">
+            04
+          </span>
+
+          <span class="section-label">
+            CONTACT
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         3D VIEW CONTROLS
+         ======================================================= -->
+
+    <div class="topbar-right">
+
+      <button
+        id="btn-night"
+        type="button"
+        onclick="toggleDayNight()"
+      >
+        ☀ Day
+      </button>
+
+
+      <button
+        id="btn-sound"
+        type="button"
+        onclick="toggleSound()"
+      >
+        ♪ Sound: Off
+      </button>
+
+
+      <button
+        id="btn-weather"
+        type="button"
+        onclick="toggleWeather()"
+      >
+        ❄ Weather
+      </button>
+
+
+      <button
+        id="btn-bloom"
+        type="button"
+        onclick="toggleBloom()"
+      >
+        ✨ Bloom: On
+      </button>
+
+
+      <button
+        id="btn-afterimage"
+        type="button"
+        onclick="toggleAfterimage()"
+      >
+        👻 Ghost: Off
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       FIRST OPEN HERO
+       ========================================================= -->
+
+  <div
+    id="hero-intro"
+    class="hero-intro"
+  >
+
+    <div class="hero-kicker">
+      Hi, I’m
+    </div>
+
+
+    <h1
+  class="hero-name glitter-script"
+  data-text="Sirine Gedira"
+>
+  Sirine Gedira
+</h1>
+
+
+    <div class="hero-role">
+      GAME DEVELOPER
+    </div>
+
+
+    <p class="hero-copy">
+      Building immersive gameplay, interactive worlds,
+      and elegant technical systems.
+    </p>
+
+  </div>
+
+
+  <!-- =========================================================
+       INFORMATION PANEL
+       ========================================================= -->
+
+  <div
+    id="panel"
+    class="panel hidden"
+  >
+
+    <div class="panel-header">
+
+      <div id="panel-icon">
+        ✦
+      </div>
+
+
+      <div id="panel-title">
+        Portfolio
+      </div>
+
+
+      <button
+        id="panel-close"
+        type="button"
+        aria-label="Close panel"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div id="panel-body"></div>
+
+
+    <div class="panel-footer">
+
+      <button
+        id="panel-prev"
+        type="button"
+      >
+        ← Prev
+      </button>
+
+
+      <button
+        id="panel-next"
+        type="button"
+      >
+        Next →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       TOOLTIP
+       ========================================================= -->
+
+  <div
+    id="tooltip"
+    class="hidden"
+  ></div>
+
+
+  <!-- =========================================================
+       HELP MESSAGE
+       ========================================================= -->
+
+  <div id="hint">
+
+    Click objects to explore
+    <br>
+
+    Drag to rotate · Scroll to zoom
+    <br>
+
+    Double-click to reset
+
+  </div>
+
+
+  <!-- =========================================================
+       DRAG CONTROL
+       ========================================================= -->
+
+  <div id="page-scroll-control">
+
+    <div id="page-scroll-track">
+
+      <button
+        id="page-scroll-handle"
+        type="button"
+        aria-label="Drag to explore portfolio"
+      >
+
+        <span class="scroll-arrow">
+          ↓
+        </span>
+
+        <span class="scroll-label">
+          DRAG
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       APPLICATION
+       ========================================================= -->
+
+  <script
+    type="module"
+    src="/src/main.js"
+  ></script>
+
+</body>
+
+</html>
