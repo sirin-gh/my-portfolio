@@ -5301,3 +5301,69 @@ body {
 
   margin-top: 0 !important;
 }
+@media (max-width: 768px) {
+
+  #hero-intro.hero-intro {
+    top: 92px !important;
+    left: 30px !important;
+    right: 24px !important;
+    width: auto !important;
+  }
+
+  .hero-kicker {
+    font-size: 1.55rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .hero-name-line {
+    font-size: 3.8rem !important;
+    line-height: 0.95 !important;
+  }
+
+  .hero-role {
+    font-size: 0.88rem !important;
+    letter-spacing: 0.28em !important;
+    margin-top: 14px !important;
+  }
+
+  .hero-copy {
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    max-width: 330px !important;
+    margin-top: 16px !important;
+  }
+
+  .topbar-right {
+    gap: 4px !important;
+    padding: 5px !important;
+  }
+
+  .topbar-right button {
+    min-width: 62px !important;
+    padding: 7px 9px !important;
+    font-size: 0.62rem !important;
+    border-radius: 14px !important;
+  }
+
+  #page-scroll-control {
+    right: 7px !important;
+  }
+
+  #page-scroll-handle {
+    width: 48px !important;
+    height: 66px !important;
+  }
+
+  .scroll-label {
+    font-size: 0.5rem !important;
+  }
+
+  #hint {
+    display: none !important;
+  }
+
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
+}
